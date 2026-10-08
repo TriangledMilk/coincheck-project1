@@ -94,6 +94,7 @@ document.querySelector('#coinInput').addEventListener('submit', async (event) =>
   console.log('Coin value:', coinValue);
 
   document.querySelector('#valCheck').textContent = `Metal is ${coinType}.`;
+  document.querySelector('#coinLabel').textContent = `${coinType.charAt(0).toUpperCase() + coinType.slice(1)} Value`;
   document.querySelector('#coinVal').textContent = `$${coinValue.toLocaleString('en-CA', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2

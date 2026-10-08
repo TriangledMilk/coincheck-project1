@@ -11,15 +11,16 @@ var lastUpdatedAt = null; // Time of the most recent successful price request.
 // idk if it does or doesnt work on github yet, didn't test yet 
 // oh well!
 
-async function AgPriceCheck() { //actual function that does the silver price checking; fetching from MetalSentinel API via Vercel serverless function.
+async function priceCheck(coinType) { //actual function that does the silver price checking; fetching from MetalSentinel API via Vercel serverless function.
 
-  const url = '/api/silver-price';
+
+  var url = '/api/${coinType}-price';
     try {
   const response = await fetch(url);
     const result = await response.json();
 
     if (!response.ok) {
-      throw new Error(result.error || 'Unable to fetch the silver price.');
+      throw new Error(result.error || 'Unable to fetch the ' + coinType + ' price.');
     }
 
         console.log(result);
@@ -39,7 +40,7 @@ async function AgPriceCheck() { //actual function that does the silver price che
     } catch (error) {
 	console.error(error);
     }
-} // end of AgPriceCheck() function
+} // end of priceCheck() function
 
 /*function updateLastUpdated() {
   if (!lastUpdatedAt) return;
@@ -83,14 +84,14 @@ function priceInfo(spotPrice, purity, weight){
 document.querySelector('#coinInput').addEventListener('submit', async (event) => {
   event.preventDefault(); // Prevent the form from submitting normally; basically it stops the browser from reloading, the default behaviour of a form submission.
 
-  //var coinType = document.querySelector('input[name="coinType"]:checked').value;
+  var coinType = document.querySelector('input[name="coinType"]:checked').value;
   var purity = parseFloat(document.querySelector('#coinPurity').value);
   var weight = parseFloat(document.querySelector('#coinWeight').value);
 
-  const pricePerOunce = await AgPriceCheck();
-  console.log('Silver price:', pricePerOunce);
+  const pricePerOunce = await priceCheck(coinType);
+  console.log(`${coinType} price:`, pricePerOunce);
   const coinValue = priceInfo(pricePerOunce, purity, weight);
   console.log('Coin value:', coinValue);
 
-  document.querySelector('#valCheck').textContent = `The value of your coin is: $${coinValue.toFixed(2)} CAD`;
+  document.querySelector('#valCheck').textContent = `The value of your coin is: $${coinValue.toFixed(2)} CAD, metal is ${coinType}.`;
 });

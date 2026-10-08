@@ -102,6 +102,16 @@ a:hover{
     font-weight: 500;
 }
 
+.step2, .step3{
+    font-size: 0.8rem;
+
+}
+
+.explainer{
+    font-size: 0.75rem;
+    color:var(--muteCream);
+}
+
 
 /* start of code to hide those annoying little up/down arrows on number input fields */
 input[type="number"]::-webkit-inner-spin-button,

@@ -94,8 +94,12 @@ document.querySelector('#coinInput').addEventListener('submit', async (event) =>
   console.log('Coin value:', coinValue);
 
   var valCheck1 = coinValue + (coinValue * 0.02); // 2% more than the coin value
-  var valCheck2 = coinValue - (coinValue * 0.05); // 5% less than the coin value
-  var valCheck3 = coinValue - (coinValue * 0.10); // 10% less than the coin value
+  var valCheck2 = coinValue + (coinValue * 0.05); // 5% more than the coin value
+  var valCheck3 = coinValue + (coinValue * 0.10); // 10% more than the coin value
+
+  var downCheck1 = coinValue - (coinValue * 0.02); // 2% less than the coin value
+  var downCheck2 = coinValue - (coinValue * 0.05); // 5% less than the coin value
+  var downCheck3 = coinValue - (coinValue * 0.10); // 10% less than the coin value
 
   document.querySelector('#valCheck1').textContent = `$${valCheck1.toLocaleString('en-CA', {
     minimumFractionDigits: 2,
@@ -109,9 +113,25 @@ document.querySelector('#coinInput').addEventListener('submit', async (event) =>
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   })} CAD`;
+
+  document.querySelector('#downCheck1').textContent = `$${downCheck1.toLocaleString('en-CA', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })} CAD`;
+  document.querySelector('#downCheck2').textContent = `$${downCheck2.toLocaleString('en-CA', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })} CAD`;
+  document.querySelector('#downCheck3').textContent = `$${downCheck3.toLocaleString('en-CA', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })} CAD`; 
+  
   document.querySelector('#coinLabel').textContent = `${coinType.charAt(0).toUpperCase() + coinType.slice(1)} coin absolute value`;
   document.querySelector('#coinVal').textContent = `$${coinValue.toLocaleString('en-CA', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   })} CAD`;
+
+
 });

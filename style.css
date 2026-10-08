@@ -82,8 +82,9 @@ a:hover{
 }
 
 #chart{
-    border: 1px solid var(--cream);
+    /*border: 1px solid var(--cream);*/
     background-color: var(--muteCoolGrey);
+    justify-content: center;
 }
 
 #coinVal, #coinLabel{

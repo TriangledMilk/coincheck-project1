@@ -86,12 +86,20 @@ a:hover{
     background-color: var(--muteCoolGrey);
 }
 
-#coinVal{
+#coinVal, #coinLabel{
     font-family: "Zalando Sans Expanded", sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
     letter-spacing: 0.05rem;
     text-align: center;
+}
+
+#coinVal{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#coinLabel{
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 

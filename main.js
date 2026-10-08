@@ -14,7 +14,7 @@ var lastUpdatedAt = null; // Time of the most recent successful price request.
 async function priceCheck(coinType) { //actual function that does the silver price checking; fetching from MetalSentinel API via Vercel serverless function.
 
 
-  var url = '/api/${coinType}-price';
+  var url = `/api/${coinType}-price`;
     try {
   const response = await fetch(url);
     const result = await response.json();

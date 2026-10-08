@@ -93,5 +93,6 @@ document.querySelector('#coinInput').addEventListener('submit', async (event) =>
   const coinValue = priceInfo(pricePerOunce, purity, weight);
   console.log('Coin value:', coinValue);
 
-  document.querySelector('#valCheck').textContent = `The value of your coin is: $${coinValue.toFixed(2)} CAD, metal is ${coinType}.`;
+  document.querySelector('#valCheck').textContent = `Metal is ${coinType}.`;
+  document.querySelector('#coinVal').textContent = `$${coinValue.toFixed(2)} CAD`;
 });

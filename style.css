@@ -86,6 +86,14 @@ a:hover{
     background-color: var(--muteCoolGrey);
 }
 
+#coinVal{
+    font-family: "Zalando Sans Expanded", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    text-align: center;
+}
+
 
 /* start of code to hide those annoying little up/down arrows on number input fields */
 input[type="number"]::-webkit-inner-spin-button,

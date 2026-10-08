@@ -93,7 +93,22 @@ document.querySelector('#coinInput').addEventListener('submit', async (event) =>
   const coinValue = priceInfo(pricePerOunce, purity, weight);
   console.log('Coin value:', coinValue);
 
-  document.querySelector('#valCheck').textContent = `Metal is ${coinType}.`;
+  var valCheck1 = coinValue + (coinValue * 0.02); // 2% more than the coin value
+  var valCheck2 = coinValue - (coinValue * 0.05); // 5% less than the coin value
+  var valCheck3 = coinValue - (coinValue * 0.10); // 10% less than the coin value
+
+  document.querySelector('#valCheck1').textContent = `$${valCheck1.toLocaleString('en-CA', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })} CAD`;
+  document.querySelector('#valCheck2').textContent = `$${valCheck2.toLocaleString('en-CA', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })} CAD`;
+  document.querySelector('#valCheck3').textContent = `$${valCheck3.toLocaleString('en-CA', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })} CAD`;
   document.querySelector('#coinLabel').textContent = `${coinType.charAt(0).toUpperCase() + coinType.slice(1)} Value`;
   document.querySelector('#coinVal').textContent = `$${coinValue.toLocaleString('en-CA', {
     minimumFractionDigits: 2,

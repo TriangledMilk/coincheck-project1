@@ -28,9 +28,9 @@ async function AgPriceCheck() { //actual function that does the silver price che
 
 
         lastUpdatedAt = new Date();
-        updateLastUpdated();
+        //updateLastUpdated();
 
-        updatedPrices();
+        //updatedPrices();
         console.log("AgPrice is now:", AgPrice);
         return AgPrice;
 
@@ -41,7 +41,7 @@ async function AgPriceCheck() { //actual function that does the silver price che
     }
 } // end of AgPriceCheck() function
 
-function updateLastUpdated() {
+/*function updateLastUpdated() {
   if (!lastUpdatedAt) return;
 
   const torontoTime = new Intl.DateTimeFormat('en-CA', {
@@ -63,7 +63,7 @@ function updateLastUpdated() {
     `Last Updated: ${parts.year} ${parts.month} ${parts.day}, ${parts.hour}:${parts.minute} Toronto Time (${secondsAgo} seconds ago)`;
 }
 
-setInterval(updateLastUpdated, 1000);
+setInterval(updateLastUpdated, 1000);*/
 
 
 function priceInfo(spotPrice, purity, weight){

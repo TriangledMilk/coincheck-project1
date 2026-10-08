@@ -1,1 +1,1 @@
-NO clue what I'm even doing. Lmao.
+I just cooked up some random nonsense I can't lie.

@@ -83,7 +83,7 @@ function priceInfo(spotPrice, purity, weight){
 document.querySelector('#coinInput').addEventListener('submit', async (event) => {
   event.preventDefault(); // Prevent the form from submitting normally; basically it stops the browser from reloading, the default behaviour of a form submission.
 
-  var coinType = document.querySelector('input[name="coinType"]:checked').value;
+  //var coinType = document.querySelector('input[name="coinType"]:checked').value;
   var purity = parseFloat(document.querySelector('#purity').value);
   var weight = parseFloat(document.querySelector('#weight').value);
 

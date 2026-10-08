@@ -5,13 +5,13 @@ var dataCollect = []; // Array to hold the data of the coins in the json file.
 var AgPrice = 0; // Variable to hold the current price of silver in CAD.
 var lastUpdatedAt = null; // Time of the most recent successful price request.
 
-AgPriceCheck();
+//AgPriceCheck();
 
 // btw this whole thing worked fine when I was like, using the servers we get from the college
 // idk if it does or doesnt work on github yet, didn't test yet 
 // oh well!
 
-async function AgPriceCheck() { //actual function that does the silver price checking
+async function AgPriceCheck() { //actual function that does the silver price checking; fetching from MetalSentinel API via Vercel serverless function.
 
   const url = '/api/silver-price';
     try {
@@ -25,11 +25,15 @@ async function AgPriceCheck() { //actual function that does the silver price che
         console.log(result);
         
         AgPrice = result.results[0].bid; // Use optional chaining to safely access nested properties
+
+
         lastUpdatedAt = new Date();
         updateLastUpdated();
 
         updatedPrices();
         console.log("AgPrice is now:", AgPrice);
+        return AgPrice;
+
         
     
     } catch (error) {
@@ -61,20 +65,32 @@ function updateLastUpdated() {
 
 setInterval(updateLastUpdated, 1000);
 
-function updatedPrices() {
-  document.querySelectorAll('.coin').forEach((coinCard, index) => {
-    const coin = dataCollect[index];
-    if (!coin) return;
 
-    const asw = coin.ASW_toz * coin.weight_toz;
-    const aswPrice = asw * AgPrice;
+function priceInfo(spotPrice, purity, weight){
+  
+  //first convert per oz price to per gram.
+  var spotPriceGram = spotPrice / 31.1035; // 1 troy ounce = 31.1035 grams
 
-    const valueEl = coinCard.querySelector('.current_value');
-    if (valueEl) {
-      valueEl.textContent = `$${aswPrice.toFixed(2)}`;
-    }
-  });
+  //then calculate the precious metal in coin based on purity and weight.
+  var preciousMetalInCoin =  purity * weight; // purity is a decimal so no need to do the whole percentage thingy.
+
+  //finally, calculate the value of the coin.
+  var coinValue = spotPriceGram * preciousMetalInCoin;
+
+  return coinValue;
 }
 
+document.querySelector('#coinInput').addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent the form from submitting normally; basically it stops the browser from reloading, the default behaviour of a form submission.
 
+  var coinType = document.querySelector('input[name="coinType"]:checked').value;
+  var purity = parseFloat(document.querySelector('#purity').value);
+  var weight = parseFloat(document.querySelector('#weight').value);
 
+  const pricePerOunce = await AgPriceCheck();
+  console.log('Silver price:', pricePerOunce);
+  const coinValue = priceInfo(pricePerOunce, purity, weight);
+  console.log('Coin value:', coinValue);
+
+  document.querySelector('#valCheck').textContent = `The value of your coin is: $${coinValue.toFixed(2)} CAD`;
+});

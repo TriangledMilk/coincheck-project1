@@ -7,19 +7,77 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sys. Des. Exercise 1</title>
+    <title>CoinCheck</title>
     <link rel="icon" type="image/png" href="./assets/jetpack_cat.png"/>
   </head>
 
 <!-- idk what im doing-->
   <body>
-    <h1>Silver Coins!</h1>
+    <h1 id="title">CoinCheck</h1>
 
-    <div id="update">
+    <!--<div id="update">
       <p>Update coin values based on real time silver prices (per troy ounce)</p>
       <p id="lastUpdated">Last Updated: </p>
       <button onclick="AgPriceCheck()">Update Price</button>
-    </div>
+    </div>-->
+    <div class="chart-input-layout">
+
+      <div id="chart">
+        <p id="valCheck">placeholder</p>
+      </div> <!-- end chart -->
+
+      <div id="input">
+        <h2 class="label">Input your coin values.</h2>
+        <p class="centerPara">Use <a href="https://en.numista.com/" target="_blank" rel="noopener noreferrer">Numista</a> to check the coin weight and purity.</p>
+
+        <form id="coinInput">
+
+          <div id="coinMetal">
+            <label class ="radio-button" for="AgCoin">
+              <input type="radio" id="AgCoin" name="coinType" value="silver">
+              <span class="zalandoExpanded">Silver (Ag)</span>
+            </label>
+            
+
+            <label class ="radio-button" for="AuCoin">
+              <input type="radio" id="AuCoin" name="coinType" value="gold">
+              <span class="zalandoExpanded">Gold (Au)</span>
+            </label>
+
+          </div> <!-- end coinMetal -->
+
+          <div id="weight">
+            <label for="coinWeight">Coin Weight (in grams):</label><br>
+            <input 
+            type="number" 
+            id="coinWeight" 
+            name="coinWeight" 
+            step="0.01"  
+            placeholder="12.00"
+            required>
+          </div> <!-- end weight -->
+          
+          <div id="purity">
+            <label for="coinPurity">Coin Purity:</label><br>
+            <input 
+            type="text" 
+            id="coinPurity" 
+            name="coinPurity" 
+            inputmode="decimal" 
+            maxlength="6" 
+            pattern="(?:0(?:\.\d{1,4})?|1(?:\.0{1,4})?)" 
+            placeholder="0.9250" 
+            title="Enter a value from 0 to 1 with up to 4 decimal places."
+            required>
+          </div> <!-- end purity -->
+
+          <button class="styleButton zalandoExpanded" type="submit">Check</button>
+
+        </form><!-- end form -->
+
+      </div> <!-- end input -->
+
+    </div> <!-- end chart-input-layout -->
 
     <script src="main.js"></script>
   </body>

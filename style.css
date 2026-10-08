@@ -31,57 +31,112 @@ h1 {
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 0.05rem;
-    /*text-align: center;
-    width: 100%;*/
+    text-align: center;
+    width: 100%;
     margin-top: 0.25rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+}
+
+.zalandoExpanded {
+    font-family: "Zalando Sans Expanded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+}
+
+.centerPara {
+    text-align: center;
 }
 
 .sublabel{
     font-style: bold;
     margin-bottom: 0.5rem;
-
 }
 
-#update{
+a{
+    color: var(--muteCream);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--muteRed);
+}
+
+.chart-input-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+} /*mobile default: stacked on top of each other*/
+
+#update, #input, #chart {
     display: flex;
     flex-direction: column; /*mobile default: stacked on top of each other*/
-    background-color: var(--muteWarmGrey);
     padding: 1rem;
-    margin: 1rem;
+    margin: 0.25rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--cream);
-
+    min-height: 25vh;
 }
-/*.value{
-    display: inline-block;
-}*/
 
+#input{
+    border: 1px solid var(--cream);
+    background-color: var(--muteWarmGrey);
+}
+
+#chart{
+    border: 1px solid var(--cream);
+    background-color: var(--muteCoolGrey);
+}
+
+
+/* start of code to hide those annoying little up/down arrows on number input fields */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+} 
+/* end of said code */
+
+/*
 .coin{
     display: flex;
     flex-direction: column; /*mobile default: stacked on top of each other*/
-    /*align-items: center;*/
+    /*align-items: center;
     background-color: var(--muteCoolGrey);
     padding: 1rem;
     margin: 1rem;
     border-radius: 0.5rem;
-}
 
 .coin_info,
 .desc_div {
-  flex: 1; /* take up equal space as the other flex item */
+  flex: 1; 
 }
 
 .coin_info b{
-    /* I already got <b> tags in my html so might as well dawg */   
+    /* I already got <b> tags in my html so might as well dawg    
     font-weight: 650;
 }
 
-@media (min-width: 700px) {
+*/
+
+
+
+@media (min-width: 700px) { /* larger screens: side by side layout */
+    .chart-input-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.25rem 0.25rem;
+    } 
+
   .coin {
     flex-direction: row; /* larger screens: side by side */
     align-items: flex-start;
   }
+
+  #update, #input, #chart {
+    min-height: 50vh;
+    }
 }
 
 .desc_div{
@@ -92,7 +147,45 @@ h1 {
     border: 1px solid var(--cream);
 }
 
-.desc_div p{
-    /*margin: 0.5rem 0;*/
-    color: var(--muteCream);
+
+
+#coinMetal {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.radio-button {
+  position: relative; /* position relative to contain the absolutely positioned input */
+  cursor: pointer; /* make the whole label clickable */
+  flex: 1; /* take up equal space as the other flex item */
+}
+
+.radio-button input {
+  position: absolute; /* position the input absolutely within the label */
+  opacity: 0; /* self explanatory */
+}
+
+.styleButton, .radio-button span, #coinWeight, #coinPurity{ /* buttons! */
+  display: block;
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.styleButton, .radio-button span{
+    width: 100%;
+  text-align: center;
+}
+.radio-button span {
+  background: var(--background);
+  border: 1px solid var(--cream);
+}
+
+.radio-button input:checked + span { /* when the input is checked, style the span */
+  background: var(--muteCyan);
+}
+
+.radio-button input:focus-visible + span { /* when the input is focused, style the span */
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
 }

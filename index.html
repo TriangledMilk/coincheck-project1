@@ -14,6 +14,7 @@
 <!-- idk what im doing-->
   <body>
     <h1 id="title">CoinCheck</h1>
+    <p class="centerPara" id="description">Check the value of your coins based on real-time precious metal prices.</p>
 
     <!--<div id="update">
       <p>Update coin values based on real time silver prices (per troy ounce)</p>
@@ -24,23 +25,41 @@
 
       <div id="chart">
 
-        <p class ="centerPara step3"><span>Caution: </span> <span id="valCheck3">...</span><span class="explainer"> +10% Premium</span></p>
+        <div class="caution">
+          <p class ="centerPara step3"><span>Caution: </span> <span id="valCheck3">...</span><span class="explainer"> +10% Premium</span>
+          <br><span class="explainer underExp">I wouldn't buy at this price purely for the metal content.</span></p>
+          <!--<p class ="centerPara explainer underExp">Meowing.</p>-->
+        </div>
+        
+        <div class="decent">
+          <p class ="centerPara step2"><span>Your preference: </span> <span id="valCheck2">...</span><span class="explainer"> +5% Premium</span>
+          <br><span class="explainer underExp">A bit much of a premium, but not terrible.</span></p>
+        </div>
 
-        <p class ="centerPara step2"><span>Your preference: </span> <span id="valCheck2">...</span><span class="explainer"> +5% Premium</span></p>
-
-        <p class ="centerPara step1" id="valCheck"><span>Decent purchase: </span> <span id="valCheck1">...</span><span class="explainer"> +2% Premium</span></p>
+        <div class="good">
+          <p class ="centerPara step1" id="valCheck"><span>Good deal: </span> <span id="valCheck1">...</span><span class="explainer"> +2% Premium</span>
+          <br><span class="explainer underExp">This price is a decent premium! Your call though.</span></p>
+        </div>
 
         <div id="coinCompositionVal">
           <p id="coinLabel">...</p>
           <p id="coinVal"></p>
         </div>
 
-        <p class ="centerPara step1"><span>Good deal: </span> <span id="downCheck1">...</span><span class="explainer"> -2% Discount</span></p>
-
-        <p class ="centerPara step2"><span>Your preference: </span> <span id="downCheck2">...</span><span class="explainer"> -5% Discount</span></p>
-
-        <p class ="centerPara step3"><span>Caution: </span> <span id="downCheck3">...</span><span class="explainer"> -10% Discount</span></p>
+        <div class="good">
+          <p class ="centerPara step1"><span>Good deal: </span> <span id="downCheck1">...</span><span class="explainer"> -2% Discount</span>
+          <br><span class="explainer underExp">Selling at this price is pretty decent! Your choice in the end though.</span></p>  
+        </div>
         
+        <div class="decent">
+          <p class ="centerPara step2"><span>Your preference: </span> <span id="downCheck2">...</span><span class="explainer"> -5% Discount</span>
+          <br><span class="explainer underExp">A bit of a questionable deal. I'd reconsider.</span></p>
+        </div>
+
+        <div class="caution">
+          <p class ="centerPara step3"><span>Caution: </span> <span id="downCheck3">...</span><span class="explainer"> -10% Discount</span>
+          <br><span class="explainer underExp">I wouldn't sell at this price purely for the metal content.</span></p>
+        </div>
         
       </div> <!-- end chart -->
 
@@ -51,20 +70,20 @@
         <form id="coinInput">
 
           <div id="coinMetal">
-            <label class ="radio-button" for="AgCoin">
-              <input type="radio" id="AgCoin" name="coinType" value="silver">
+            <label class ="radio-button AgCoin" for="AgCoin">
+              <input type="radio" class="AgCoin" id="AgCoin" name="coinType" value="silver">
               <span class="zalandoExpanded">Silver (Ag)</span>
             </label>
             
 
-            <label class ="radio-button" for="AuCoin">
-              <input type="radio" id="AuCoin" name="coinType" value="gold">
+            <label class ="radio-button AuCoin" for="AuCoin">
+              <input type="radio" class="AuCoin" id="AuCoin" name="coinType" value="gold">
               <span class="zalandoExpanded">Gold (Au)</span>
             </label>
 
           </div> <!-- end coinMetal -->
 
-          <div id="weight">
+          <div id="weight" class="numInput">
             <label for="coinWeight">Coin Weight (in grams):</label><br>
             <input 
             type="number" 
@@ -75,7 +94,7 @@
             required>
           </div> <!-- end weight -->
           
-          <div id="purity">
+          <div id="purity" class="numInput">
             <label for="coinPurity">Coin Purity:</label><br>
             <input 
             type="text" 
@@ -89,7 +108,7 @@
             required>
           </div> <!-- end purity -->
 
-          <button class="styleButton zalandoExpanded" type="submit">Check</button>
+          <button class="styleButton zalandoExpanded" type="submit" id="checking">Check</button>
 
         </form><!-- end form -->
 

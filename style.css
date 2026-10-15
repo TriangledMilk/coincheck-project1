@@ -15,6 +15,12 @@ Equivalent to html{} in this case. */
     --muteCream: #c7c8d1;
     --muteCoolGrey: #242528;
     --background: #141414;
+    --silver: #a9a9a9;
+    --gold: #dabc15;
+
+    --warningRed: #C64A27;
+    --cautionYellow: #CCB531;
+    --goodGreen: #58BC43;
 }
 
 h1 {
@@ -24,6 +30,16 @@ h1 {
     font-weight: 700;
     font-style: normal;
     text-align: center;
+}
+
+#title {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+
+#description {
+    margin-top: 0.1rem;
+    padding: 0.1rem;
 }
 
 .label {
@@ -47,13 +63,35 @@ h1 {
     text-align: center;
 }
 
+.explainer{
+    font-size: 0.75rem;
+    color:var(--muteCream);
+}
+
+.underExp{
+    font-size: 0.5rem;
+    font-style: italic;
+}
+
 .sublabel{
     font-style: bold;
     margin-bottom: 0.5rem;
 }
 
+.caution{
+    border-left: 1rem solid var(--warningRed);
+}
+
+.decent{
+    border-left: 1rem solid var(--cautionYellow);
+}
+
+.good{
+    border-left: 1rem solid var(--goodGreen);
+}
+
 a{
-    color: var(--muteCream);
+    color: var(--cautionYellow);
     text-decoration: none;
 }
 
@@ -113,10 +151,7 @@ a:hover{
 
 }
 
-.explainer{
-    font-size: 0.75rem;
-    color:var(--muteCream);
-}
+
 
 
 /* start of code to hide those annoying little up/down arrows on number input fields */
@@ -137,7 +172,12 @@ input[type="number"], input[type="text"] {
     border-radius: 0.5rem;
     border: var(--cream) 1px solid;
     background-color: var(--background);
+    
 
+}
+
+.numInput{
+    margin: 0.5rem 0 0.5rem 0;
 }
 /* end of said code */
 
@@ -214,6 +254,17 @@ input[type="number"], input[type="text"] {
   border-radius: 0.5rem;
 }
 
+#checking {
+  background-color: var(--muteCoolGrey);
+  color: var(--text);
+  border: 1px solid var(--cream);
+  cursor: pointer;
+}
+
+#checking:hover {
+  background-color: var(--muteCyan);
+}
+
 .styleButton, .radio-button span{
     width: 100%;
   text-align: center;
@@ -223,8 +274,16 @@ input[type="number"], input[type="text"] {
   border: 1px solid var(--cream);
 }
 
-.radio-button input:checked + span { /* when the input is checked, style the span */
+/*.radio-button input:checked + span { /* when the input is checked, style the span 
   background: var(--muteCyan);
+}*/
+
+.radio-button.AgCoin input:checked + span { /* when the input is checked, style the span */
+  background: var(--silver);
+}
+
+.radio-button.AuCoin input:checked + span { /* when the input is checked, style the span */
+  background: var(--gold);
 }
 
 .radio-button input:focus-visible + span { /* when the input is focused, style the span */
